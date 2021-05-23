@@ -1,4 +1,3 @@
 target/
 dbt_modules/
-dbt-env/
 logs/

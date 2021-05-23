@@ -1,0 +1,44 @@
+Metadata-Version: 2.1
+Name: presto-python-client
+Version: 0.7.0
+Summary: Client for the Presto distributed SQL Engine
+Home-page: https://github.com/prestodb/presto-python-client
+Author: Presto Team
+Author-email: presto-users@googlegroups.com
+License: Apache 2.0
+Platform: UNKNOWN
+Classifier: Development Status :: 4 - Beta
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 2.7
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: Implementation :: CPython
+Classifier: Programming Language :: Python :: Implementation :: PyPy
+Classifier: Topic :: Database :: Front-Ends
+Requires-Dist: click
+Requires-Dist: requests
+Requires-Dist: six
+Requires-Dist: ipaddress ; python_version=="2.7"
+Requires-Dist: typing ; python_version=="2.7"
+Provides-Extra: all
+Requires-Dist: requests-kerberos ; extra == 'all'
+Provides-Extra: kerberos
+Requires-Dist: requests-kerberos ; extra == 'kerberos'
+Provides-Extra: tests
+Requires-Dist: requests-kerberos ; extra == 'tests'
+Requires-Dist: httpretty ; extra == 'tests'
+Requires-Dist: pytest ; extra == 'tests'
+Requires-Dist: pytest-runner ; extra == 'tests'
+
+
+Client for Presto (https://prestodb.io), a distributed SQL engine for
+interactive and batch big data processing. Provides a low-level client and
+a DBAPI 2.0 implementation.
+
+

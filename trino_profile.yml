@@ -1,0 +1,13 @@
+trino:
+  target: dev
+  outputs:
+    dev:
+      type: presto
+      method: none  # optional, one of {none | ldap | kerberos}
+      user: admin
+      password:  # required if method is ldap or kerberos
+      catalog: postgresql
+      host: localhost
+      port: 8080
+      schema: public
+      threads: 1

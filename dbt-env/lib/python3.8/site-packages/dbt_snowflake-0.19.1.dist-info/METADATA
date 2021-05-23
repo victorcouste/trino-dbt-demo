@@ -1,0 +1,29 @@
+Metadata-Version: 2.1
+Name: dbt-snowflake
+Version: 0.19.1
+Summary: The snowflake adapter plugin for dbt (data build tool)
+Home-page: https://github.com/fishtown-analytics/dbt
+Author: Fishtown Analytics
+Author-email: info@fishtownanalytics.com
+License: UNKNOWN
+Platform: UNKNOWN
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: License :: OSI Approved :: Apache Software License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.6
+Classifier: Programming Language :: Python :: 3.7
+Classifier: Programming Language :: Python :: 3.8
+Requires-Python: >=3.6.2
+Description-Content-Type: text/markdown
+Requires-Dist: dbt-core (==0.19.1)
+Requires-Dist: snowflake-connector-python[secure-local-storage] (==2.3.6)
+Requires-Dist: azure-common (<2.0.0)
+Requires-Dist: azure-storage-blob (<13.0.0,>=12.0.0)
+Requires-Dist: urllib3 (<1.26.0,>=1.20)
+Requires-Dist: cryptography (<4,>=3.2)
+
+The snowflake adapter plugin for dbt (data build tool)
+
+

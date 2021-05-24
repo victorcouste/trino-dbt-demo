@@ -25,8 +25,8 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
 
 vars:
-  orders_catalog: bigquery
-  orders_schema: default
+  bigquery_catalog: bigquery
+  bigquery_schema: data_prep
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

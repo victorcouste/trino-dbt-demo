@@ -1,8 +1,8 @@
 # trino-dbt-demo
 
-Welcome to this trino dbt project.
+Welcome to this Trino dbt project !
 
-<img src="https://github.com/victorcouste/trino-dbt-demo/raw/main/logos.png" width="60%" height="60%">
+<img src="https://github.com/victorcouste/trino-dbt-demo/raw/main/logos.png" width="50%" height="50%">
 
 The idea of this project is to demonstrate the power of 2 of the most successfull Open Source data projects, dbt and Trino.
 

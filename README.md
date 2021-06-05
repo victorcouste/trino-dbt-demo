@@ -13,7 +13,7 @@ The idea of this project is to demonstrate the power of 2 of the most successful
 With this demonstration you will be able to:
 - Start a tiny Trino server.
 - From Trino, connect to a Google BigQuery dataset and an on-premises PostgreSQL database.
-- Via a dbt project, join a BigQuery table and a Postgres table, and write the result into a on-premises PostgreSQL table.
+- Via a dbt project, join a BigQuery table and a PostgreSQL table, and write the result into a on-premises PostgreSQL table.
 
 ---
 
@@ -25,7 +25,7 @@ Installations:
 
 - **dbt** - [installation instruction](https://docs.getdbt.com/dbt-cli/installation)
 
-- Trino/Presto dbt Python plugin **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution)
+- **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution), this is the Trino/Presto dbt Python plugin.
 
 ---
 
@@ -35,13 +35,13 @@ Installations:
 
 As explained [here](https://trino.io/docs/current/installation/deployment.html#configuring-trino), before your start Trino server you need to:
 - Set your config and properties files in the **/etc** folder.
-- Define your [catalogs](https://trino.io/docs/current/installation/deployment.html#catalog-properties) with data soucre connections.
+- Define your [catalogs](https://trino.io/docs/current/installation/deployment.html#catalog-properties) with data source connections.
 
 For this demo project, you case use conf, properties and catalog files found in the [trino_etc](/trino_etc) folder. Just copy the contents of this **/trino_etc** folder in a **/etc** folder under your Trino server installation.
 
 #### Configuration: ####
 
-Because of the [PrestoSQL to Trino renaming](https://trino.io/blog/2020/12/27/announcing-trino.html), you need to force protocol header to be named Presto for the dbt-presto plugin to work well with last Trino versions. For that, the additional `protocol.v1.alternate-header-name=Presto` property need to be added in Trino conf file [config.properties](trino_etc/config.properties) ([documentation](https://trino.io/docs/current/admin/properties-general.html?highlight=alternate%20header#protocol-v1-alternate-header-name))
+Because of the [PrestoSQL to Trino renaming](https://trino.io/blog/2020/12/27/announcing-trino.html), you need to force protocol header to be named Presto for the dbt-presto plugin to work well with last Trino versions. For that, the additional `protocol.v1.alternate-header-name=Presto` property need to be added in Trino conf file [config.properties](trino_etc/config.properties) ([documentation](https://trino.io/docs/current/admin/properties-general.html?highlight=alternate%20header#protocol-v1-alternate-header-name)).
 
 
 #### Catalogs: ####
@@ -65,10 +65,10 @@ Note that you need to add the `allow-drop-table=true` so dbt can delete table vi
 **BigQuery**
 
 For BigQuery we will connect to the dbt public project dbt-tutorial. The [bigquery.properties](https://github.com/victorcouste/trino-dbt-demo/blob/main/trino_etc/catalog/bigquery.properties) file have to be copied in your etc/catalog Trino folder. You need to set **bigquery.credentials-file** or **bigquery.credentials-key**
-([Trino doc](https://trino.io/docs/current/connector/bigquery.html)). The [Google doc](https://cloud.google.com/docs/authentication/getting-started
-) to get your JSON key file.
+([Trino doc](https://trino.io/docs/current/connector/bigquery.html)). 
 
-Explanation also in [dbt documentation](https://docs.getdbt.com/tutorial/setting-up#create-a-bigquery-project) on BigQuery project and json key file creation.
+The [Google documentation](https://cloud.google.com/docs/authentication/getting-started
+) to get your JSON key file or an explanation in [dbt documentation](https://docs.getdbt.com/tutorial/setting-up#create-a-bigquery-project) on BigQuery project and json key file creation.
 
 ```
 connector.name=bigquery
@@ -107,7 +107,7 @@ trino:
 In [dbt project file](https://docs.getdbt.com/reference/dbt_project.yml), [dbt_project.yml](https://github.com/victorcouste/trino-dbt-demo/blob/main/dbt_project.yml), we:
 - Use the trino profile
 - Define variables for BigQuery catalog and schema (dataset)
-- Set default catalog and schema for output (under models)
+- Set default PostgreSQL catalog and schema for output (under models)
 
 ```
 name: 'trino_project'
@@ -141,7 +141,22 @@ models:
 
 Finaly, we need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros) to change way dbt generate and use a new schema (the change between BigQuery and PostgreSQL) in a model [generate_schema_name.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/macros/generate_schema_name.sql).
 
+```
+{% macro generate_schema_name(custom_schema_name, node) -%}
 
+    {%- set default_schema = target.schema -%}
+    {%- if custom_schema_name is none -%}
+
+        {{ default_schema }}
+
+    {%- else -%}
+
+        {{ custom_schema_name | trim }}
+
+    {%- endif -%}
+
+{%- endmacro %}
+```
 
 ---
 
@@ -179,3 +194,5 @@ You can also change directly Trino catalog and schema in SQL model files with:
 ```
 
 Finaly, you can connect to another existing Trino or Starburst deployment or cluster.
+
+Have fun!

@@ -8,7 +8,7 @@ The idea of this project is to demonstrate the power of 2 of the most successful
 
 - [dbt](https://www.getdbt.com) (data build tool) enables analytics engineers to transform data in their warehouses by simply writing SQL select statements. dbt handles turning these SQL select statements into tables and views ([more details](https://docs.getdbt.com/docs/introduction)).
 
-- [Trino](https://trino.io), formerly [PrestoSQL](https://trino.io/blog/2020/12/27/announcing-trino.html), is a fast distributed SQL query engine for big data analytics that helps you explore your data universe ([more details](https://trino.io/docs/current/overview/use-cases.html)).
+- [Trino](https://trino.io), formerly [PrestoSQL](https://trino.io/blog/2020/12/27/announcing-trino.html), is a fast distributed SQL query engine for big data analytics that helps you explore your data universe and mix multiple data sources ([more details](https://trino.io/docs/current/overview/use-cases.html)).
 
 Why not use dbt + trino as an ETL tool? A match made in heaven?
 

@@ -15,7 +15,7 @@ So why not use dbt and Trino as a powerful ETL tool ?
 Trino connects to multiple and diverse data sources ([available connectors](https://trino.io/docs/current/connector.html)) via 1 connection and process SQL queries at scale and fast, while dbt handles these SQL transformation queries to create tables or views.
 
 
-With this demonstration and project example, you will be able to:
+With this demonstration and simple project example, you will be able to:
 - Start a Trino server.
 - From Trino, connect to a Google BigQuery dataset and an on-premises PostgreSQL database.
 - Via a dbt project, join a BigQuery table and a PostgreSQL table, and write the result into a on-premises PostgreSQL table.
@@ -219,6 +219,6 @@ You can also change Trino catalog and schema directly in SQL model files with:
 }}
 ```
 
-Finaly, you can connect to another existing Trino or Starburst deployment or cluster.
+Finally, yolu can connect to another existing Trino or Starburst deployment or cluster.
 
 Have fun!

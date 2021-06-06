@@ -77,11 +77,11 @@ Note that you need to add the `allow-drop-table=true` so dbt can delete table vi
 
 **BigQuery**
 
-For BigQuery we will connect to the dbt public project dbt-tutorial. The [bigquery.properties](https://github.com/victorcouste/trino-dbt-demo/blob/main/trino_etc/catalog/bigquery.properties) file have to be copied in your etc/catalog Trino folder. You need to set **bigquery.credentials-file** or **bigquery.credentials-key**
-([Trino doc](https://trino.io/docs/current/connector/bigquery.html)). 
+For BigQuery we will connect to the dbt public project dbt-tutorial. The [bigquery.properties](https://github.com/victorcouste/trino-dbt-demo/blob/main/trino_etc/catalog/bigquery.properties) file have to be copied in your etc/catalog Trino folder and you need to set **bigquery.credentials-file** or **bigquery.credentials-key**
+([Trino doc](https://trino.io/docs/current/connector/bigquery.html)) with your Google Cloud project key. 
 
-The [Google documentation](https://cloud.google.com/docs/authentication/getting-started
-) to get your JSON key file or an explanation in [dbt documentation](https://docs.getdbt.com/tutorial/setting-up#create-a-bigquery-project) on BigQuery project and json key file creation.
+To get this project JSON key file, you can read the [Google documentation](https://cloud.google.com/docs/authentication/getting-started
+) or an explanation in [dbt documentation](https://docs.getdbt.com/tutorial/setting-up#create-a-bigquery-project) on BigQuery project and json key file creation.
 
 ```
 connector.name=bigquery
@@ -117,9 +117,9 @@ trino:
 
 #### Project:
 
-In [dbt project file](https://docs.getdbt.com/reference/dbt_project.yml), [dbt_project.yml](https://github.com/victorcouste/trino-dbt-demo/blob/main/dbt_project.yml), we:
+In the [dbt project file](https://docs.getdbt.com/reference/dbt_project.yml), [dbt_project.yml](https://github.com/victorcouste/trino-dbt-demo/blob/main/dbt_project.yml), we:
 - Use the trino profile
-- Define variables for BigQuery catalog and schema (dataset)
+- Define variables for BigQuery catalog **bigquery_catalog** and schema (dataset) **bigquery_schema**
 - Set default PostgreSQL catalog and schema for output (under models)
 
 ```
@@ -152,7 +152,7 @@ models:
       schema: public
 ```
 
-Finaly, we need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros) to change way dbt generate and use a new schema (the change between BigQuery and PostgreSQL) in a model [generate_schema_name.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/macros/generate_schema_name.sql).
+Finaly, we need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros) to change the way dbt generate and use a new schema (the change between BigQuery and PostgreSQL) in a model. Macro file [generate_schema_name.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/macros/generate_schema_name.sql).
 
 ```
 {% macro generate_schema_name(custom_schema_name, node) -%}

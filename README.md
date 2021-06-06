@@ -178,9 +178,9 @@ We need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt
 #### Model:
 
 In [customers.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/models/customers.sql) model, you can see that we:
-- Compute the first and last order date and the number of orders per customer from the **jaffle_shop_orders** BigQuery table.
-- Join previous result with the PostgreSQL **jaffle_shop_customers** table.
-- Write the result in a new **customers** PostgreSQL table.
+1. Compute the first and last order date and the number of orders per customer from the **jaffle_shop_orders** BigQuery table.
+2. Join previous result with the PostgreSQL **jaffle_shop_customers** table.
+3. Write the result in a new **customers** PostgreSQL table.
 
 
 ---

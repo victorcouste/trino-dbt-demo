@@ -5,7 +5,8 @@ Welcome to this Trino dbt project !
 <img src="https://github.com/victorcouste/trino-dbt-demo/raw/main/logos.png" width="50%" height="50%">
 
 The idea of this project is to demonstrate the power of 2 of the most successful Open Source data projects, dbt and Trino.
-Why not use dbt + trino as an ETL tool?
+
+Why not use dbt + trino as an ETL tool? A match made in heaven ?
 
 - [dbt](https://www.getdbt.com) (data build tool) enables analytics engineers to transform data in their warehouses by simply writing SQL select statements. dbt handles turning these SQL select statements into tables and views ([more details](https://docs.getdbt.com/docs/introduction)).
 

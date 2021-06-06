@@ -219,6 +219,6 @@ You can also change Trino catalog and schema directly in SQL model files with:
 }}
 ```
 
-Finally, yolu can connect to another existing Trino or Starburst deployment or cluster.
+Finally, you can connect to another existing Trino or [Starburst Enterprise](https://www.starburst.io/platform/starburst-enterprise) (Trino enterprise edition) deployment or cluster for more scalability, security and performance.
 
 Have fun!

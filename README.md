@@ -44,6 +44,18 @@ For this demo project, you case use conf, properties and catalog files found in 
 Because of the [PrestoSQL to Trino renaming](https://trino.io/blog/2020/12/27/announcing-trino.html), you need to force protocol header to be named Presto for the dbt-presto plugin to work well with last Trino versions. For that, the additional `protocol.v1.alternate-header-name=Presto` property need to be added in Trino conf file [config.properties](trino_etc/config.properties) ([documentation](https://trino.io/docs/current/admin/properties-general.html?highlight=alternate%20header#protocol-v1-alternate-header-name)).
 
 
+```
+coordinator=true
+node-scheduler.include-coordinator=true
+http-server.http.port=8080
+query.max-memory=5GB
+query.max-memory-per-node=1GB
+query.max-total-memory-per-node=2GB
+discovery-server.enabled=true
+discovery.uri=http://localhost:8080
+protocol.v1.alternate-header-name=Presto
+```
+
 #### Catalogs: ####
 
 You need to define data sources you want to connect via Trino.

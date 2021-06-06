@@ -152,7 +152,7 @@ models:
       schema: public
 ```
 
-Finaly, we need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros) to change the way dbt generate and use a new schema (the change between BigQuery and PostgreSQL) in a model. Macro file [generate_schema_name.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/macros/generate_schema_name.sql).
+We need also to define a [dbt Macro](https://docs.getdbt.com/docs/building-a-dbt-project/jinja-macros#macros) to change the way dbt generate and use a new schema (the change between BigQuery and PostgreSQL) in a model. Macro file [generate_schema_name.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/macros/generate_schema_name.sql).
 
 ```
 {% macro generate_schema_name(custom_schema_name, node) -%}
@@ -171,6 +171,12 @@ Finaly, we need also to define a [dbt Macro](https://docs.getdbt.com/docs/buildi
 {%- endmacro %}
 ```
 
+Finaly, in [customers.sql](https://github.com/victorcouste/trino-dbt-demo/blob/main/models/customers.sql) you can see that we:
+- Compute first and last order dates and number of orders per customer from the **jaffle_shop_orders** BigQuery table.
+- Join previous result with the PostgreSQL **jaffle_shop_customers** table.
+- Write the result in a new **customers** PostgreSQL table.
+
+
 ---
 
 ## Use the project
@@ -183,8 +189,9 @@ For dbt, run the following commands:
 - `dbt --version` to check if dbt is well installed with presto-dbt plugin.
 - `dbt debug` to check dbt project and connectivity to Presto.
 - `dbt seed` to load the [jaffle_shop_customers.csv](/data/jaffle_shop_customers.csv) file in PostgreSQL.
-- `dbt run` to run the model, do the join and create the **customers** PostgreSQL table.
+- `dbt run` to run the [customers](https://github.com/victorcouste/trino-dbt-demo/blob/main/models/customers.sql)  model, do the join and create the **customers** PostgreSQL table.
 - `dbt test` to test data quality on 2 columns of the customers table.
+
 
 You can open Trino Web UI started on 8080 port (http://localhost:8080) to check and monitor SQL queries run by dbt.
 

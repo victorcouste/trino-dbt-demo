@@ -202,7 +202,7 @@ You can open Trino Web UI started on 8080 port (http://localhost:8080) to check 
 
 For input datasets, you can imagine to use the Google BigQuery public dataset [bigquery-public-data](https://cloud.google.com/bigquery/public-data).
 
-You can also change directly Trino catalog and schema in SQL model files with:
+You can also change Trino catalog and schema directly in SQL model files with:
 
 ```
 {{

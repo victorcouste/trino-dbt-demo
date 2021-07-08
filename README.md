@@ -193,7 +193,7 @@ Trino will listen by default on 8080 port.
 
 For dbt, run the following commands:
 - `dbt --version` to check if dbt is well installed with presto-dbt plugin.
-- `dbt debug` to check dbt project and connectivity to Presto.
+- `dbt debug` to check dbt project and connectivity to Trino.
 - `dbt seed` to load the [jaffle_shop_customers.csv](/data/jaffle_shop_customers.csv) file in PostgreSQL.
 - `dbt run` to run the [customers](https://github.com/victorcouste/trino-dbt-demo/blob/main/models/customers.sql)  model, do the join with the BigQuery table aggregated and create the **customers** PostgreSQL table.
 - `dbt test` to test data quality on 2 columns of the customers table.

@@ -30,7 +30,7 @@ Installations:
 
 - **dbt** - [installation instruction](https://docs.getdbt.com/dbt-cli/installation)
 
-- **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution), this is the Trino/Presto dbt Python plugin. 08/09/21 UPDATE : a new [**Trino dbt plugin**](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile) is now also available.
+- **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution), this is the Presto dbt Python plugin. 08/09/21 UPDATE : a new [**Trino dbt plugin**](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile) is now also available.
 
 ---
 

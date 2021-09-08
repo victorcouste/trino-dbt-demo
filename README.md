@@ -30,7 +30,7 @@ Installations:
 
 - **dbt** - [installation instruction](https://docs.getdbt.com/dbt-cli/installation)
 
-- **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution), this is the Trino/Presto dbt Python plugin.
+- **dbt-presto** - [installation instruction](https://docs.getdbt.com/reference/warehouse-profiles/presto-profile#installation-and-distribution), this is the Trino/Presto dbt Python plugin. 08/09/21 UPDATE : a new [Trino dbt plugin](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile) is now also available.
 
 ---
 
@@ -60,6 +60,8 @@ discovery-server.enabled=true
 discovery.uri=http://localhost:8080
 protocol.v1.alternate-header-name=Presto
 ```
+
+08/09/21 UPDATE : Using the new [Trino dbt plugin](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile), you don't need to change the `protocol.v1.alternate-header-name` property.
 
 #### Catalogs: ####
 
@@ -118,6 +120,8 @@ trino:
       schema: public
       threads: 1
 ```
+
+08/09/21 UPDATE : Using the new [Trino dbt plugin](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile), the profile `type` will have to be replaced by `trino`, [documentation](https://docs.getdbt.com/reference/warehouse-profiles/trino-profile#set-up-a-trino-target).
 
 #### Project:
 
